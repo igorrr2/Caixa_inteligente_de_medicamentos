@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cadastro de Remédio"
+        android:textSize="24sp"
+        android:gravity="center"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"/>
+
+    <EditText
+        android:id="@+id/edit_text_nome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nome do Remédio"/>
+
+    <EditText
+        android:id="@+id/edit_text_horario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Horário do Remédio"/>
+
+    <Button
+        android:id="@+id/button_salvar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Salvar"
+        android:textColor="#FFFFFF"
+        android:background="@color/colorPrimary"/>
+
+</LinearLayout>

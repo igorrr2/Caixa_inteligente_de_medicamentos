@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+ 
+    <TextView
+        android:text="Login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:layout_gravity="center_horizontal"
+        android:paddingTop="30dp"
+        android:paddingBottom="30dp"
+        android:textColor="#000000" 
+        android:id="@+id/txtviewLogin"/>
+ 
+    <EditText
+        android:id="@+id/txtUsuario"
+        android:hint="Username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:padding="10dp" />
+ 
+    <EditText
+        android:id="@+id/txtSenha"
+        android:hint="Password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:padding="10dp"
+        android:inputType="textPassword" />
+ 
+    <Button
+        android:id="@+id/btnLogin"
+        android:text="Login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="30dp"
+        android:textColor="#FFFFFF"
+        android:background="#000000" />
+ 
+    <TextView
+        android:text="Don't have an account? Register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16dp"
+        android:layout_gravity="center_horizontal"
+        android:paddingTop="30dp"
+        android:paddingBottom="30dp"
+        android:textColor="#000000" />
+ 
+    <Button
+        android:id="@+id/btnRegistrar"
+        android:text="Register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:textColor="#FFFFFF"
+        android:background="#000000" />
+ 
+</LinearLayout>

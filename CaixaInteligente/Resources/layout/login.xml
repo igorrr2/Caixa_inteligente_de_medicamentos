@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Botão Perfil -->
+    <Button
+        android:id="@+id/button_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Perfil"
+        android:layout_margin="16dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:textColor="#FFFFFF"
+        android:background="@color/colorPrimary" />
+
+    <!-- Botão Comandos -->
+    <Button
+        android:id="@+id/button_commands"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Comandos"
+        android:layout_margin="16dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:textColor="#FFFFFF"
+        android:background="@color/colorPrimary" />
+
+    <!-- Lista de Remédios -->
+    <ListView
+        android:id="@+id/list_remedios"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/button_profile"
+        android:layout_above="@id/button_add_remedio"/>
+
+    <!-- Botão Adicionar Remédio -->
+    <Button
+        android:id="@+id/button_add_remedio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Adicionar Remédio"
+        android:layout_margin="16dp"
+        android:layout_alignParentBottom="true"
+        android:textColor="#FFFFFF"
+        android:background="@color/colorPrimary" />
+</RelativeLayout>
