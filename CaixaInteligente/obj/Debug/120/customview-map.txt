@@ -28,8 +28,6 @@ com.google.android.material.bottomnavigation.BottomNavigationView;C:\igor\IOT2\C
 com.google.android.material.tabs.TabLayout;C:\igor\IOT2\CaixaInteligente\CaixaInteligente\obj\Debug\120\lp\55\jl\res\layout\fallbacktabbardonotuse.xml
 com.google.android.material.tabs.TabLayout;C:\igor\IOT2\CaixaInteligente\CaixaInteligente\obj\Debug\120\lp\55\jl\res\layout\rootlayout.xml
 com.google.android.material.tabs.TabLayout;C:\igor\IOT2\CaixaInteligente\CaixaInteligente\obj\Debug\120\lp\55\jl\res\layout\tabbar.xml
-crc643f46942d9dd1fff9.ShellFlyoutLayout;C:\igor\IOT2\CaixaInteligente\CaixaInteligente\obj\Debug\120\lp\55\jl\res\layout\flyoutcontent.xml
-crc64720bb2db43a66fe9.FormsViewPager;C:\igor\IOT2\CaixaInteligente\CaixaInteligente\obj\Debug\120\lp\55\jl\res\layout\rootlayout.xml
 declare-styleable;C:\igor\IOT2\CaixaInteligente\CaixaInteligente\obj\Debug\120\lp\55\jl\res\values\attrs.xml
 dimen;obj\Debug\120\res\values\dimens.xml
 EditText;obj\Debug\120\res\layout\activity_main.xml

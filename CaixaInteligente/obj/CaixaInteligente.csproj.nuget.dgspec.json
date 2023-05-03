@@ -36,7 +36,7 @@
           "dependencies": {
             "MQTTnet": {
               "target": "Package",
-              "version": "[4.1.4.563, )"
+              "version": "[4.2.0.706, )"
             },
             "MQTTnet.Extensions.ManagedClient": {
               "target": "Package",

@@ -88,6 +88,7 @@
     <Compile Include="ComandosActivity.cs" />
     <Compile Include="LoginActivity.cs" />
     <Compile Include="MainActivity.cs" />
+    <Compile Include="MqttManager.cs" />
     <Compile Include="PerfilActivity.cs" />
     <Compile Include="RegistrarActivity.cs" />
     <Compile Include="Remedio.cs" />
@@ -134,7 +135,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="MQTTnet">
-      <Version>4.1.4.563</Version>
+      <Version>4.2.0.706</Version>
     </PackageReference>
     <PackageReference Include="MQTTnet.Extensions.ManagedClient">
       <Version>4.2.0.706</Version>

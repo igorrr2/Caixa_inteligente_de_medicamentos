@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     "MonoAndroid,Version=v12.0": {
-      "MQTTnet/4.1.4.563": {
+      "MQTTnet/4.2.0.706": {
         "type": "package",
         "compile": {
           "lib/netstandard2.1/MQTTnet.dll": {}
@@ -2307,10 +2307,10 @@
     }
   },
   "libraries": {
-    "MQTTnet/4.1.4.563": {
-      "sha512": "gO9segUcKyQJcjV7w7OOdoAIkec7cUN65vEhYutbdWcj4rbtz/oL/RDvQVVbameXc6ChkjKx7/HbO+R8ejAUZQ==",
+    "MQTTnet/4.2.0.706": {
+      "sha512": "WvGqQL9PbnG8wl/uMYTVRYXiZfiJE15M6RYNboGaFMSqPNPWy3iNq0bDPFwKgKFpbriNlSsSXOZQFMvpr5N62A==",
       "type": "package",
-      "path": "mqttnet/4.1.4.563",
+      "path": "mqttnet/4.2.0.706",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2322,6 +2322,8 @@
         "lib/net5.0/MQTTnet.xml",
         "lib/net6.0/MQTTnet.dll",
         "lib/net6.0/MQTTnet.xml",
+        "lib/net7.0/MQTTnet.dll",
+        "lib/net7.0/MQTTnet.xml",
         "lib/netcoreapp3.1/MQTTnet.dll",
         "lib/netcoreapp3.1/MQTTnet.xml",
         "lib/netstandard1.3/MQTTnet.dll",
@@ -2333,7 +2335,7 @@
         "lib/uap10.0.10240/MQTTnet.dll",
         "lib/uap10.0.10240/MQTTnet.pri",
         "lib/uap10.0.10240/MQTTnet.xml",
-        "mqttnet.4.1.4.563.nupkg.sha512",
+        "mqttnet.4.2.0.706.nupkg.sha512",
         "mqttnet.nuspec",
         "nuget.png"
       ]
@@ -4797,7 +4799,7 @@
   },
   "projectFileDependencyGroups": {
     "MonoAndroid,Version=v12.0": [
-      "MQTTnet >= 4.1.4.563",
+      "MQTTnet >= 4.2.0.706",
       "MQTTnet.Extensions.ManagedClient >= 4.2.0.706",
       "Xamarin.Android.Support.Design >= 28.0.0.3",
       "Xamarin.Android.Support.v7.RecyclerView >= 28.0.0.3",
@@ -4842,7 +4844,7 @@
         "dependencies": {
           "MQTTnet": {
             "target": "Package",
-            "version": "[4.1.4.563, )"
+            "version": "[4.2.0.706, )"
           },
           "MQTTnet.Extensions.ManagedClient": {
             "target": "Package",
@@ -4877,16 +4879,6 @@
     }
   },
   "logs": [
-    {
-      "code": "NU1605",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Downgrade de pacote detectado: MQTTnet de 4.2.0.706 para 4.1.4.563. Referencie o pacote diretamente do projeto para selecionar uma versão diferente. \r\n CaixaInteligente -> MQTTnet.Extensions.ManagedClient 4.2.0.706 -> MQTTnet (>= 4.2.0.706) \r\n CaixaInteligente -> MQTTnet (>= 4.1.4.563)",
-      "libraryId": "MQTTnet",
-      "targetGraphs": [
-        "MonoAndroid,Version=v12.0"
-      ]
-    },
     {
       "code": "NU1605",
       "level": "Warning",

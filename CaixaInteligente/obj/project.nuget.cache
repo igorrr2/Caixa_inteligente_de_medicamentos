@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "jhN72Ia9csFMR+WGGxP8hzhR7yJ4nLdAOKfKqpQuV2NOIQlkZsoOwIrYtwC5t0f8Qcro3yxTna2/9jXc2NDfug==",
+  "dgSpecHash": "uMzF+5cVJ7+DQ00BRz7qIGsXBwtSZbrSHmm3bVEKZQ7vZ0EJyZXdvZTijIckH6a11QGzjreWqGh8ps+bs4Bxow==",
   "success": true,
   "projectFilePath": "C:\\igor\\IOT2\\CaixaInteligente\\CaixaInteligente\\CaixaInteligente.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\igorr\\.nuget\\packages\\mqttnet\\4.1.4.563\\mqttnet.4.1.4.563.nupkg.sha512",
+    "C:\\Users\\igorr\\.nuget\\packages\\mqttnet\\4.2.0.706\\mqttnet.4.2.0.706.nupkg.sha512",
     "C:\\Users\\igorr\\.nuget\\packages\\mqttnet.extensions.managedclient\\4.2.0.706\\mqttnet.extensions.managedclient.4.2.0.706.nupkg.sha512",
     "C:\\Users\\igorr\\.nuget\\packages\\sqlite-net-pcl\\1.8.116\\sqlite-net-pcl.1.8.116.nupkg.sha512",
     "C:\\Users\\igorr\\.nuget\\packages\\sqlitepclraw.bundle_green\\2.0.4\\sqlitepclraw.bundle_green.2.0.4.nupkg.sha512",
@@ -108,16 +108,6 @@
     "C:\\Users\\igorr\\.nuget\\packages\\xamarin.google.guava.listenablefuture\\1.0.0.2\\xamarin.google.guava.listenablefuture.1.0.0.2.nupkg.sha512"
   ],
   "logs": [
-    {
-      "code": "NU1605",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Downgrade de pacote detectado: MQTTnet de 4.2.0.706 para 4.1.4.563. Referencie o pacote diretamente do projeto para selecionar uma versão diferente. \r\n CaixaInteligente -> MQTTnet.Extensions.ManagedClient 4.2.0.706 -> MQTTnet (>= 4.2.0.706) \r\n CaixaInteligente -> MQTTnet (>= 4.1.4.563)",
-      "libraryId": "MQTTnet",
-      "targetGraphs": [
-        "MonoAndroid,Version=v12.0"
-      ]
-    },
     {
       "code": "NU1605",
       "level": "Warning",
