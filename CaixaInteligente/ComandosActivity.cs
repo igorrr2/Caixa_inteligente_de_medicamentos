@@ -20,7 +20,7 @@ namespace CaixaInteligente
         private bool alarmeAtivado;
 
 
-       
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
 
@@ -42,8 +42,8 @@ namespace CaixaInteligente
             mqttClient2.ConnectAsync(mqttConfig).Wait();
 
             btnDispararAlarme.Click += OnAlarmButtonClicked;
-            
-            
+
+
             // Configurações do cliente MQTT
 
             var mqttClientOptions = new ManagedMqttClientOptionsBuilder()
@@ -90,13 +90,17 @@ namespace CaixaInteligente
 
             mqttClient2.PublishAsync(message).Wait();
         }
-        public void AtualizaStatusAlarme(string status)
+        public void AtualizaStatusAlarme(string status, bool alarmeAtivado)
         {
-            
+
             if (_statusAlarmeTextView != null)
             {
-            _statusAlarmeTextView.Text = status;
-            _statusAlarmeTextView.RequestLayout();
+                _statusAlarmeTextView.Text = status;
+                if (alarmeAtivado)
+                    _statusAlarmeTextView.SetBackgroundColor(Android.Graphics.Color.LightGreen);
+                else
+                    _statusAlarmeTextView.SetBackgroundColor(Android.Graphics.Color.Red);
+                _statusAlarmeTextView.RequestLayout();
 
             }
         }
@@ -117,13 +121,13 @@ namespace CaixaInteligente
             // Salva o status do alarme
             SaveAlarmeStatus();
         }
-        private void SaveAlarmeStatus() 
+        private void SaveAlarmeStatus()
         {
             // Salva o status do alarme usando as preferências compartilhadas do aplicativo
             ISharedPreferences prefs = PreferenceManager.GetDefaultSharedPreferences(this);
             ISharedPreferencesEditor editor = prefs.Edit();
-            if(_statusAlarmeTextView.Text == "Alarme Ativado")
-            editor.PutBoolean("alarmeAtivado", true);
+            if (_statusAlarmeTextView.Text == "Alarme Ativado")
+                editor.PutBoolean("alarmeAtivado", true);
             else
                 editor.PutBoolean("alarmeAtivado", false);
             editor.Commit();

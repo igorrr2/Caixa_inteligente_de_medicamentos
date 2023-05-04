@@ -40,12 +40,12 @@ namespace CaixaInteligente
                 if (mensagem == "Alarme Desativado")
                     _statusAlarme.RunOnUiThread(() =>
                     {
-                        _statusAlarme.AtualizaStatusAlarme(mensagem);
+                        _statusAlarme.AtualizaStatusAlarme(mensagem, false);
                     });
                 else
                     _statusAlarme.RunOnUiThread(() =>
                     {
-                        _statusAlarme.AtualizaStatusAlarme(mensagem);
+                        _statusAlarme.AtualizaStatusAlarme(mensagem, true);
                     });
             }
             catch(Exception e)
