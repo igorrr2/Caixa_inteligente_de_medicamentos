@@ -10,6 +10,7 @@ using MQTTnet.Extensions.ManagedClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -19,12 +20,13 @@ namespace CaixaInteligente
     public class MqttManager
     {
         private readonly IManagedMqttClient _mqttClient;
+        ComandosActivity _statusAlarme;
 
-        public MqttManager(IManagedMqttClient mqttClient)
+        public MqttManager(IManagedMqttClient mqttClient, ComandosActivity statusAlarme)
         {
             _mqttClient = mqttClient;
             _mqttClient.ApplicationMessageReceivedAsync += OnMessageReceivedAsync;
-
+            _statusAlarme = statusAlarme;
 
         }
 
@@ -32,6 +34,25 @@ namespace CaixaInteligente
         {
             // handle the received MQTT message here
             Console.WriteLine($"Received message on topic {eventArgs.ApplicationMessage.Topic}: {Encoding.UTF8.GetString(eventArgs.ApplicationMessage.Payload)}");
+            string mensagem = Encoding.UTF8.GetString(eventArgs.ApplicationMessage.Payload);
+            try
+            {
+                if (mensagem == "Alarme Desativado")
+                    _statusAlarme.RunOnUiThread(() =>
+                    {
+                        _statusAlarme.AtualizaStatusAlarme(mensagem);
+                    });
+                else
+                    _statusAlarme.RunOnUiThread(() =>
+                    {
+                        _statusAlarme.AtualizaStatusAlarme(mensagem);
+                    });
+            }
+            catch(Exception e)
+            {
+                Console.Write(e.Message);
+            }
+               
         }
 
         public async Task SubscribeAsync(string topic)

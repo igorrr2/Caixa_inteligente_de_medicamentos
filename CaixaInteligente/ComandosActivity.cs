@@ -6,14 +6,21 @@ using MQTTnet;
 using MQTTnet.Protocol;
 using MQTTnet.Extensions.ManagedClient;
 using MQTTnet.Client;
+using Android.Content;
+using Android.Preferences;
 
 namespace CaixaInteligente
 {
     [Activity(Label = "ComandosActivity")]
-    internal class ComandosActivity : Activity
+    public class ComandosActivity : Activity
     {
         private IMqttClient mqttClient2;
         private string clientId;
+        private static TextView _statusAlarmeTextView;
+        private bool alarmeAtivado;
+
+
+       
         protected override void OnCreate(Bundle savedInstanceState)
         {
 
@@ -21,6 +28,7 @@ namespace CaixaInteligente
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             SetContentView(Resource.Layout.Comandos);
             Button btnDispararAlarme = FindViewById<Button>(Resource.Id.btnDispararAlarme);
+            _statusAlarmeTextView = FindViewById<TextView>(Resource.Id.statusAlarmeTextView);
             // Configurações do cliente MQTT
             var brokerHost = "test.mosquitto.org";
             var brokerPort = 1883;
@@ -47,7 +55,7 @@ namespace CaixaInteligente
             .Build();
 
             var mqttClient = new MqttFactory().CreateManagedMqttClient();
-            var mqttManager = new MqttManager(mqttClient);
+            var mqttManager = new MqttManager(mqttClient, new ComandosActivity());
 
             // connect to the MQTT broker
             mqttClient.StartAsync(mqttClientOptions);
@@ -55,7 +63,18 @@ namespace CaixaInteligente
             // subscribe to the desired topic
             var topic = "TOPICO_SUBSCRIBE_CAIXA_INTELIGENTE_ANDROID";
             mqttManager.SubscribeAsync(topic);
-            
+
+            var topic2 = "TOPICO_SUBSCRIBE_CAIXA_INTELIGENTE_ESP";
+            var payload = "STATUS ALARME";
+            var message = new MqttApplicationMessageBuilder()
+                .WithTopic(topic2)
+                .WithPayload(payload)
+                .WithQualityOfServiceLevel(MqttQualityOfServiceLevel.AtLeastOnce)
+                .WithRetainFlag(false)
+                .Build();
+
+            mqttClient2.PublishAsync(message).Wait();
+
         }
         private void OnAlarmButtonClicked(object sender, EventArgs e)
         {
@@ -70,6 +89,51 @@ namespace CaixaInteligente
                 .Build();
 
             mqttClient2.PublishAsync(message).Wait();
+        }
+        public void AtualizaStatusAlarme(string status)
+        {
+            
+            if (_statusAlarmeTextView != null)
+            {
+            _statusAlarmeTextView.Text = status;
+            _statusAlarmeTextView.RequestLayout();
+
+            }
+        }
+        protected override void OnResume()
+        {
+            base.OnResume();
+
+            // Carrega o status do alarme
+            alarmeAtivado = LoadAlarmeStatus();
+
+            // Atualiza o TextView com o status atual do alarme
+            _statusAlarmeTextView.Text = alarmeAtivado ? "Alarme Ativado" : "Alarme Desativado";
+        }
+        protected override void OnPause()
+        {
+            base.OnPause();
+
+            // Salva o status do alarme
+            SaveAlarmeStatus();
+        }
+        private void SaveAlarmeStatus() 
+        {
+            // Salva o status do alarme usando as preferências compartilhadas do aplicativo
+            ISharedPreferences prefs = PreferenceManager.GetDefaultSharedPreferences(this);
+            ISharedPreferencesEditor editor = prefs.Edit();
+            if(_statusAlarmeTextView.Text == "Alarme Ativado")
+            editor.PutBoolean("alarmeAtivado", true);
+            else
+                editor.PutBoolean("alarmeAtivado", false);
+            editor.Commit();
+        }
+
+        private bool LoadAlarmeStatus()
+        {
+            // Carrega o status do alarme das preferências compartilhadas do aplicativo
+            ISharedPreferences prefs = PreferenceManager.GetDefaultSharedPreferences(this);
+            return prefs.GetBoolean("alarmeAtivado", false);
         }
     }
 }

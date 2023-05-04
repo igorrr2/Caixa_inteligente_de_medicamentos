@@ -13,6 +13,9 @@ using Android.Content;
 using AndroidX.RecyclerView.Widget;
 using Android.Runtime;
 using SQLite;
+using MQTTnet.Extensions.ManagedClient;
+using MQTTnet.Client;
+using MQTTnet;
 
 namespace CaixaInteligente
 {
@@ -53,6 +56,26 @@ namespace CaixaInteligente
             }
 
             CarregarRemedios();
+
+            // Configurações do cliente MQTT
+
+            var mqttClientOptions = new ManagedMqttClientOptionsBuilder()
+            .WithAutoReconnectDelay(TimeSpan.FromSeconds(5))
+            .WithClientOptions(new MqttClientOptionsBuilder()
+            .WithClientId(Guid.NewGuid().ToString())
+            .WithTcpServer("test.mosquitto.org", 1883)
+            .Build())
+            .Build();
+
+            var mqttClient = new MqttFactory().CreateManagedMqttClient();
+            var mqttManager = new MqttManager(mqttClient, new ComandosActivity());
+
+            // connect to the MQTT broker
+            mqttClient.StartAsync(mqttClientOptions);
+
+            // subscribe to the desired topic
+            var topic = "TOPICO_SUBSCRIBE_CAIXA_INTELIGENTE_ANDROID";
+            mqttManager.SubscribeAsync(topic);
         }
 
         protected override void OnResume()
