@@ -113,6 +113,12 @@ namespace CaixaInteligente
 
             // Atualiza o TextView com o status atual do alarme
             _statusAlarmeTextView.Text = alarmeAtivado ? "Alarme Ativado" : "Alarme Desativado";
+
+            if (alarmeAtivado)
+                _statusAlarmeTextView.SetBackgroundColor(Android.Graphics.Color.LightGreen);
+            else
+                _statusAlarmeTextView.SetBackgroundColor(Android.Graphics.Color.Red);
+            _statusAlarmeTextView.RequestLayout();
         }
         protected override void OnPause()
         {
