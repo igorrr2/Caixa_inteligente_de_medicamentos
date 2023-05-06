@@ -79,7 +79,7 @@ namespace CaixaInteligente
         private void OnAlarmButtonClicked(object sender, EventArgs e)
         {
             var topic = "TOPICO_SUBSCRIBE_CAIXA_INTELIGENTE_ESP";
-            var payload = "TESTE XAMARIN";
+            var payload = "A";
 
             var message = new MqttApplicationMessageBuilder()
                 .WithTopic(topic)
