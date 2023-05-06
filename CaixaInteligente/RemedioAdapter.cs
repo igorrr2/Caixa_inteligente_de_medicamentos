@@ -5,6 +5,9 @@ using Android.Runtime;
 using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Widget;
+using MQTTnet;
+using MQTTnet.Client;
+using MQTTnet.Protocol;
 using SQLite;
 using System;
 using System.Collections.Generic;
@@ -19,7 +22,7 @@ namespace CaixaInteligente
         private List<Remedio> remedios;
         private Context context;
         private EventHandler apagarClickHandler;
-
+        ComandosActivity _removerRemedioEsp;
         public RemedioAdapter(Context context, List<Remedio> remedios)
         {
             this.context = context;
@@ -40,6 +43,9 @@ namespace CaixaInteligente
                         string caminhoBanco = System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "Remedio.db");
                         var db = new SQLiteConnection(caminhoBanco);
                         db.Delete<Remedio>(remedio.Id);
+                        //Notifica o esp sobrer o remédio apagado e envia o horário para remoção
+                        _removerRemedioEsp = new ComandosActivity();
+                        _removerRemedioEsp.RemoverRemedioEsp(remedio.Horario);
                         NotifyDataSetChanged();
                         Toast.MakeText(context, "Remédio apagado", ToastLength.Short).Show();
                     })

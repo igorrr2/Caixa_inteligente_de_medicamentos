@@ -64,7 +64,7 @@ namespace CaixaInteligente
             var topic = "TOPICO_SUBSCRIBE_CAIXA_INTELIGENTE_ANDROID";
             mqttManager.SubscribeAsync(topic);
 
-            var topic2 = "TOPICO_SUBSCRIBE_CAIXA_INTELIGENTE_ESP";
+            var topic2 = "TOPICO_SUBSCRIBE_CAIXA_INTELIGENTE_STATUS_ALARME";
             var payload = "STATUS ALARME";
             var message = new MqttApplicationMessageBuilder()
                 .WithTopic(topic2)
@@ -88,6 +88,60 @@ namespace CaixaInteligente
                 .WithRetainFlag(false)
                 .Build();
 
+            mqttClient2.PublishAsync(message).Wait();
+        }
+        public void RemoverRemedioEsp(string mensagem)
+        {
+            var topic = "TOPICO_SUBSCRIBE_CAIXA_INTELIGENTE_REMOVER_HORARIO";
+            var payload = mensagem;
+
+            var message = new MqttApplicationMessageBuilder()
+                .WithTopic(topic)
+                .WithPayload(payload)
+                .WithQualityOfServiceLevel(MqttQualityOfServiceLevel.AtLeastOnce)
+                .WithRetainFlag(false)
+                .Build();
+
+            if (mqttClient2 == null)
+            {
+                var brokerHost = "test.mosquitto.org";
+                var brokerPort = 1883;
+                var mqttConfig = new MqttClientOptionsBuilder()
+                    .WithTcpServer(brokerHost, brokerPort)
+                    .WithClientId(clientId)
+                    .Build();
+
+                // Criação do cliente MQTT
+                mqttClient2 = new MqttFactory().CreateMqttClient();
+                mqttClient2.ConnectAsync(mqttConfig).Wait();
+            }
+
+            mqttClient2.PublishAsync(message).Wait();
+        }
+        public void AdicionarRemedioEsp(string mensagem)
+        {
+            var topic = "TOPICO_SUBSCRIBE_CAIXA_INTELIGENTE_ADICIONAR_HORARIO";
+            var payload = mensagem;
+
+            var message = new MqttApplicationMessageBuilder()
+                .WithTopic(topic)
+                .WithPayload(payload)
+                .WithQualityOfServiceLevel(MqttQualityOfServiceLevel.AtLeastOnce)
+                .WithRetainFlag(false)
+                .Build();
+            if(mqttClient2 == null)
+            {
+                var brokerHost = "test.mosquitto.org";
+                var brokerPort = 1883;
+                var mqttConfig = new MqttClientOptionsBuilder()
+                    .WithTcpServer(brokerHost, brokerPort)
+                    .WithClientId(clientId)
+                    .Build();
+
+                // Criação do cliente MQTT
+                mqttClient2 = new MqttFactory().CreateMqttClient();
+                mqttClient2.ConnectAsync(mqttConfig).Wait();
+            }
             mqttClient2.PublishAsync(message).Wait();
         }
         public void AtualizaStatusAlarme(string status, bool alarmeAtivado)

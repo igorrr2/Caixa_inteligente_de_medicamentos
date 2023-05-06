@@ -19,6 +19,7 @@ namespace CaixaInteligente
         private EditText editTextHorario;
         private Button buttonSalvar;
         private SQLiteConnection db;
+        ComandosActivity _adicionarRemedioEsp;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -58,6 +59,8 @@ namespace CaixaInteligente
                     db = new SQLiteConnection(caminhoCompletoDB);
                     var remedio = new Remedio() { Nome = editTextNome.Text, Horario = editTextHorario.Text };
                     db.Insert(remedio);
+                    _adicionarRemedioEsp = new ComandosActivity();
+                    _adicionarRemedioEsp.AdicionarRemedioEsp(remedio.Horario);
                     Toast.MakeText(this, "Remédio adicionado com sucesso", ToastLength.Short).Show();
                 });
                 builder.SetNegativeButton("Não", (dialog, which) =>
