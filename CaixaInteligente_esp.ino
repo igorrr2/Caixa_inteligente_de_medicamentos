@@ -2,7 +2,6 @@
 #include <WiFi.h>
 #include <PubSubClient.h>
 #include <ESP32Servo.h>  //Biblioteca utilizada
-//teste
 
 int buz=0;
 const int buzzer = 23;
